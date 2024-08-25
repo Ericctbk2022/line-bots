@@ -61,6 +61,7 @@ def callback():
         if not isinstance(event.message, TextMessageContent):
             continue
         with ApiClient(configuration) as api_client:
+            print("->" + event.message.text)
             line_bot_api = MessagingApi(api_client)
             line_bot_api.reply_message_with_http_info(
                 ReplyMessageRequest(
