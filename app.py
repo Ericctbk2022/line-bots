@@ -47,7 +47,9 @@ def callback():
     # get request body as text
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
-
+    print("channel_secret: " + channel_secret)
+    print("channel_access_token: " + channel_access_token)
+    print("Request body: " + body)
     # parse webhook body
     try:
         events = parser.parse(body, signature)
