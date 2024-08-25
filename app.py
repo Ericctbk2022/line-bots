@@ -1,10 +1,17 @@
-from flask import Flask, request, abort
+import os
+import sys
+from argparse import ArgumentParser
 
-from linebot.v3 import (
-    WebhookHandler
+from flask import Flask, request, abort
+from linebot import (
+    WebhookParser
 )
 from linebot.v3.exceptions import (
     InvalidSignatureError
+)
+from linebot.v3.webhooks import (
+    MessageEvent,
+    TextMessageContent,
 )
 from linebot.v3.messaging import (
     Configuration,
@@ -12,10 +19,6 @@ from linebot.v3.messaging import (
     MessagingApi,
     ReplyMessageRequest,
     TextMessage
-)
-from linebot.v3.webhooks import (
-    MessageEvent,
-    TextMessageContent
 )
 
 app = Flask(__name__)
