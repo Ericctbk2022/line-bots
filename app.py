@@ -21,8 +21,8 @@ from linebot.v3.webhooks import (
 app = Flask(__name__)
 
 # get channel_secret and channel_access_token from your environment variable
-channel_secret = os.getenv('57621dba7b714219dc8da61260373339', None)
-channel_access_token = os.getenv('7ye5TfCfI5OUe/lmpRzU4lRdqnHU2iZvPF4dEoz7nKesgUOyW6fB2yenLR1GL6obS3NOg4ZOGk/6Bwc3vQyGCluHS0xHJmuXJGSr0zBRwADPVpXSlodqbESVHCdFu2j4MsXw68cEuRXq1xuKGphLyQdB04t89/1O/w1cDnyilFU=', None)
+channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
+channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
 if channel_secret is None:
     print('Specify LINE_CHANNEL_SECRET as environment variable.')
     sys.exit(1)
