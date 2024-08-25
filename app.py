@@ -56,8 +56,10 @@ def callback():
     # if event is MessageEvent and message is TextMessage, then echo text
     for event in events:
         if not isinstance(event, MessageEvent):
+            print("It's not MessageEvent")
             continue
         if not isinstance(event.message, TextMessageContent):
+            print("It's not TextMessageContent")
             continue
         with ApiClient(configuration) as api_client:
             print("event -> " + event)
