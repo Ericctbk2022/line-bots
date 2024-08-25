@@ -3,8 +3,8 @@ import sys
 from argparse import ArgumentParser
 
 from flask import Flask, request, abort
-from linebot import (
-    WebhookParser
+from linebot.v3 import (
+     WebhookHandler
 )
 from linebot.v3.exceptions import (
     InvalidSignatureError
@@ -70,12 +70,11 @@ def message_text(event):
         )
 
 
-
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
         usage='Usage: python ' + __file__ + ' [--port <port>] [--help]'
     )
-    arg_parser.add_argument('-p', '--port', type=int, default=8000, help='port')
+    arg_parser.add_argument('-p', '--port', default=8000, help='port')
     arg_parser.add_argument('-d', '--debug', default=False, help='debug')
     options = arg_parser.parse_args()
 
