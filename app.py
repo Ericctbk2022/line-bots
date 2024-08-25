@@ -46,11 +46,12 @@ def callback():
 
     # get request body as text
     body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
+    app.logger.info('Request body: ' + body)
 
     # parse webhook body
     try:
         events = parser.parse(body, signature)
+        print("events -> " +events)
     except InvalidSignatureError:
         abort(400)
 
@@ -61,7 +62,6 @@ def callback():
         if not isinstance(event.message, TextMessageContent):
             continue
         with ApiClient(configuration) as api_client:
-            print("->" + event.message.text)
             line_bot_api = MessagingApi(api_client)
             line_bot_api.reply_message_with_http_info(
                 ReplyMessageRequest(
