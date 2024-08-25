@@ -46,12 +46,11 @@ def callback():
 
     # get request body as text
     body = request.get_data(as_text=True)
-    app.logger.info('Request body: ' + body)
+    app.logger.info("Request body: " + body)
 
     # parse webhook body
     try:
         events = parser.parse(body, signature)
-        print("events -> " +events)
     except InvalidSignatureError:
         abort(400)
 
