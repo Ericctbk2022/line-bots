@@ -86,7 +86,7 @@ def push():
             )
             return 'OK'
         except:
-            abort(400)
+            return 'Bad Request'
 
 
 if __name__ == "__main__":
