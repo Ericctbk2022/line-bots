@@ -79,7 +79,8 @@ def push():
             msg = request.args.get('msg')   # 取得網址的 msg 參數
             line_bot_api.push_message_with_http_info(
                 PushMessageRequest(
-                    to="C9820ccb05eade1a38d188dce01dc98ed"
+                    # to="U8624bcbf8f03da4b2b0a8969b60853ef", #給特定人或是群組
+                    to="C9820ccb05eade1a38d188dce01dc98ed",
                     messages=[TextMessage(text=msg)]
                 )
             )
