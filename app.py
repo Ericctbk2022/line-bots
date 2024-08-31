@@ -18,7 +18,8 @@ from linebot.v3.messaging import (
     ApiClient,
     MessagingApi,
     ReplyMessageRequest,
-    TextMessage
+    TextMessage,
+    PushMessageRequest
 )
 
 app = Flask(__name__)
@@ -69,6 +70,20 @@ def message_text(event):
                 messages=[TextMessage(text=event.message.text)]
             )
         )
+
+@app.route("/")
+def push():
+    with ApiClient(configuration) as api_client:
+        line_bot_api = MessagingApi(api_client)
+        try: 
+            msg = request.args.get('msg')   # 取得網址的 msg 參數
+            line_bot_api.PushMessageRequest(
+                to="U8624bcbf8f03da4b2b0a8969b60853ef",
+                messages=[TextMessage(text=msg)]
+            )
+            return 'OK'
+        except:
+            print("error send")
 
 
 if __name__ == "__main__":
